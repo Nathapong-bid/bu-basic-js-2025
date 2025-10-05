@@ -54,9 +54,9 @@
     <input id = 'txtlastname' type="text" placeholder="Enter last name" >
     <input id = 'txt' type="button" value="Add" onclick="add();">
     <input id = 'txt' type="button" value="Reset Input" onclick="clearinput();">
-    <input id = 'txt' type="button" value="Reset Table">
+    <input id = 'txt' type="button" value="Reset Table" onclick="resetall();">
 
-    <table> 
+    <table id ="table" style="margin-top: 15px;"> 
         <thead>
             <tr>
                 <td>
@@ -90,9 +90,17 @@
     </table>
     <script>
         function add() {
-            firstname = document.getElementById('txtfirstname').value;
-            lastname = document.getElementById('txtlastname').value;
+            var firstname = document.getElementById('txtfirstname').value;
+            var lastname = document.getElementById('txtlastname').value;
+            var table = document.getElementById("table");
+            
+            var row1 = table.insertRow(-1);
 
+            var cell1 = row1.insertCell(0);
+            var cell2 = row1.insertCell(1);
+            cell1.innerHTML = firstname;
+            cell2.innerHTML = lastname;
+        
         }
 
         function clearinput() {
@@ -101,8 +109,7 @@
         }
 
         function resetall() {
-            document.getElementById('txtfirstname').value = '';
-            document.getElementById('txtlastname').value = '';
+            document.getElementById('table').innerHTML ="<tr> <td><h3>First name</h3></td> <td><h3>Last name</h3></td></tr>";
         }
     </script>
 </body>
